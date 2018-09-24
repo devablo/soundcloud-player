@@ -1,0 +1,44 @@
+
+.searchBar::-webkit-input-placeholder {
+    color: lightgray;
+    text-transform: lowercase;
+    font-weight: 300;
+}
+
+.searchWrapper {
+    width: 75%;
+    display: flex;
+    text-align: center;
+    margin: 0 auto;
+    margin: 2% auto 2% auto;
+}
+
+.searchWrapper input {
+    flex: 4;
+    margin-right: 2%;
+    height: 2rem;
+}
+
+.searchWrapper .searchBtn {
+    flex: 1;
+    border-radius: 5px;
+    border: 1px solid white;
+    background: none;
+    color: white;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+}
+
+.searchBtn {
+    transition: background .5s ease;  
+}
+
+.searchBtn:focus{
+    outline: none;
+}
+
+.searchBtn:hover {
+    background: lightgray;
+    color: black;
+    transition: background .5s ease;
+}
