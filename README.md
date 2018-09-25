@@ -44,17 +44,19 @@ docker build -t soundcloud-player .
 ```
 
 ``` sh
+# Run Container
+docker run -p 3501:8080 soundcloud-player
+
+# Keeps running container with -d
+docker run -p 3501:8080 -d soundcloud-player
+```
+
+Open http://localhost:3501/
+
+``` sh
 #Local Docker Images
 docker images -a
 
-# Run Container
-docker run -p 3500:8080 soundcloud-player
-
-# Keeps running container with -d
-docker run -p 3500:8080 -d soundcloud-player
-```
-
-``` sh
 # Get container ID
 docker ps -a
 
@@ -65,7 +67,7 @@ docker logs <container id>
 docker exec -it <container id> /bin/bash
 
 # Machine IP
-docker-machine ip  node-express-docker
+docker-machine ip soundcloud-player
 
 # Other Docker Commands
 docker stop <container-id>
@@ -73,11 +75,5 @@ docker rmi $(docker images -a -q) #delete all images
 docker images purge
 docker rmi Image Image
 docker system prune
-
-# Example
-Running on http://localhost:3500
-
-# Test
-curl -i localhost:3500
 
 ```

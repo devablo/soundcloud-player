@@ -11,11 +11,11 @@ COPY package*.json ./
 
 RUN npm install --unsafe-perm
 
-#COPY . /app/
 COPY . .
 
-#USER node
-ENV PORT 3500
-EXPOSE 8080
+#ENV PORT 3500
+# This must match the port exposed in the app
+# To do, drive this from the .env so this isn't fixed to 4000
+EXPOSE 4000
 
 CMD [ "npm", "start" ]
