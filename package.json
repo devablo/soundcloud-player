@@ -9,8 +9,9 @@
     "build": "webpack -p",
     "debug": "node --nolazy --inspect-brk=9229 server.js",
     "dev": "npm run-script watch | nodemon server.js",
-    "start": "npm run-script build | node server.js"
-  },
+    "start": "npm run-script build && node server.js",
+    "heroku-postbuild": "cd dist && npm run-script build"
+},
   "author": "aaron <aarym@live.com>",
   "dependencies": {
     "axios": "^0.18.0",
