@@ -1,7 +1,7 @@
 import React, { Component} from "react";
 import "./index.css";
-import axios from 'axios';
 const soundCloudService = require('../services/soundcloud')
+const APIKEY = "1e82cb59611dbc3be9760487fc7bab2d";
 
 class Search extends Component{  
   constructor(props) {
@@ -28,7 +28,7 @@ class Search extends Component{
     element.classList.remove("hidden");
     
     let audioSource = document.querySelector("#audioSource");
-    audioSource.src = track.stream_url + "?" + APIKEY;
+    audioSource.src = track.stream_url + "?client_id=" + APIKEY;
     let audioController = document.querySelector("#audioController");
     audioController.load();
 
@@ -47,7 +47,6 @@ class Search extends Component{
         soundCloudService.Query(userInput)
         .then((data) => {
           console.log(data);
-  
           this.setState({
             tracks: data
           });
@@ -62,7 +61,9 @@ class Search extends Component{
     if (!data || !data.artwork_url) {
       return "http://www.i-dedicate.com/media/profile_images/default.png";
     } else {
-      return data.artwork_url;
+      // see difference image formats 
+      // https://developers.soundcloud.com/docs/api/reference#tracks
+      return data.artwork_url.replace('-large.jpg', '-crop.jpg');
     }
   }
   render(){
