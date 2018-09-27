@@ -1,4 +1,16 @@
 audio {
     margin: 0 auto;
-    width: 80%;
+    width: 100%;
   }
+
+.nowPlaying {
+    text-align: left;
+    margin-left: 10%;
+    font-size: 1rem;
+}
+    
+@media (max-width: 550px) {
+  audio {
+      width: 100%;
+  }
+}

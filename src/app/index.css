@@ -3,14 +3,15 @@ body {
     color: #F5F5F5;
     font-family: 'Quicksand';
     font-weight: 300;
-    margin: 0 15%;
 }
-
+.siteWrapper {
+    margin: 15%;
+}
 .topWrapper {
-display: flex;
-flex-direction: column;
-justify-content: space-around;
-text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
 }
 .headerPulseLogo{
     height: 1.2em;
@@ -29,12 +30,12 @@ text-align: center;
 
 h1 {
     font-weight: 300;
-    font-size: 5rem;
-    margin: 20% 0 0 0;
+    font-size: 4rem;
 }
 
 .subTitle {
-margin: 0;
+    margin: 0;
+    font-size: 1.2rem;
 }
 
 .songTitle {
@@ -51,45 +52,12 @@ letter-spacing: 2px;
 width: 80%;
 }
 
-.searchBar {
-border: none;
-border-bottom: 1px solid white;
-background: none;
-color: white;
-font-size: 1.5rem;
-margin: 2% 0 2% 0;
-}
-
-.searchBar:focus {
-outline: none;
-}
-
 .hidden {
 display: none;
 }
 
 
-.nowPlaying {
-text-align: left;
-margin-left: 10%;
-font-size: 10px;
-}
 
-.resultsTitle {
-text-align: center;
-font-size: 1rem;
-font-weight: 300;
-margin: 3% 0;
-}
-
-.searchResults {
-width: 100%;
-display: flex;
-flex-wrap: wrap;
-/*margin: 0 5% 0 5%;*/
-align-items: flex-start;
-justify-content: space-around;
-}
 
 .trackWrapper {
 width: calc(100% / 4);
@@ -120,15 +88,15 @@ transition: all 2s;
 z-index: 1;
 }
 
-.searchResultsSection {
-margin: 0 auto;
-}
 
 .trackWrapper {
 text-align: center;
 }
 
 @media (max-width: 800px) {
+    h1 {
+        font-size: 3rem;
+    }
     .trackWrapper {
         width: 40%;
     }
@@ -136,13 +104,15 @@ text-align: center;
 
 @media (max-width: 550px) {
     .trackWrapper {
-        width: 100%;
+        width: 75%;
     }
 
     .searchWrapper {
         flex-direction: column;
     }
-
+    .searchWrapper .searchBtn {
+        margin-top: 1.5rem;
+    }
     .searchBar {
         text-align: center;
     }

@@ -27,9 +27,8 @@ class Search extends Component{
     let element = document.querySelector("#audioController");
     element.classList.remove("hidden");
     
-    let audioSource = document.querySelector("#audioSource");
-    audioSource.src = track.stream_url + "?client_id=" + APIKEY;
     let audioController = document.querySelector("#audioController");
+    audioController.src = track.stream_url + "?client_id=" + APIKEY;
     audioController.load();
 
     document.querySelector("#artistPlaying").innerHTML = "Now Playing: " + track.user.username + " ";
@@ -71,7 +70,7 @@ class Search extends Component{
       <div className="search">
           <form onSubmit={this.handleSubmit}>
             <div className="searchWrapper">
-                <input type="text" name="search" value={this.state.trackSearch} className="searchBar" placeholder="Search For Any Artist" onChange={this.trackChange} />
+                <input type="text" name="search" value={this.state.trackSearch} className="searchBar" placeholder="Artist..." onChange={this.trackChange} />
                 <button className="searchBtn" value="SEARCH">SEARCH</button>
             </div>
           </form>
