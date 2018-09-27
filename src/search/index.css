@@ -1,10 +1,3 @@
-
-.searchBar::-webkit-input-placeholder {
-    color: lightgray;
-    text-transform: lowercase;
-    font-weight: 300;
-}
-
 .searchWrapper {
     display: flex;
     text-align: center;
@@ -62,11 +55,14 @@
 
 .searchBar {
     border: none;
+    -webkit-appearance: none;
+    border-radius: 0;
     border-bottom: 1px solid white;
     background: none;
     color: white;
     font-size: 1.5rem;
     margin: 2% 0 2% 0;
+    padding: 0.5em;
 }
     
 .searchBar:focus {

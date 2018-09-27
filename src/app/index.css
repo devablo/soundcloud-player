@@ -5,7 +5,7 @@ body {
     font-weight: 300;
 }
 .siteWrapper {
-    margin: 15%;
+    margin: 10%;
 }
 .topWrapper {
     display: flex;
@@ -114,10 +114,6 @@ text-align: center;
         margin-top: 1.5rem;
     }
     .searchBar {
-        text-align: center;
-    }
-
-    .searchBar::-webkit-input-placeholder {
         text-align: center;
     }
 }
