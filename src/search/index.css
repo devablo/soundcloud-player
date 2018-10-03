@@ -68,3 +68,68 @@
 .searchBar:focus {
     outline: none;
 }
+
+.songTitle {
+    font-weight: 300;
+}
+.userName {
+    font-weight: 400;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    }
+    
+.userImg {
+    width: 100%;
+}
+
+
+.userImg:hover {
+    cursor: pointer;
+    opacity: .2;
+    transition: all 1s;
+    z-index: 0;
+}
+
+.playButton {
+    position:relative;
+    top: 7rem;
+    opacity: 0;
+}
+
+.playButton:hover {
+    opacity: 1;
+    transition: all 2s;
+    z-index: 1;
+}
+
+@media (max-width: 550px) {
+    .searchWrapper {
+        flex-direction: column;
+    }
+    .searchWrapper .searchBtn {
+        margin-top: 1.5rem;
+    }
+    .searchBar {
+        text-align: center;
+    }
+}
+
+.trackWrapper {
+    width: calc(100% / 4);
+    margin: 0 2% 8% 2%;
+}
+.trackWrapper {
+    text-align: center;
+}
+
+@media (max-width: 800px) {
+    .trackWrapper {
+        width: 40%;
+    }
+}
+
+@media (max-width: 550px) {
+    .trackWrapper {
+        width: 75%;
+    }
+}

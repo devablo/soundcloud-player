@@ -1,14 +1,27 @@
-import React, { Component} from "react";
+import React from "react";
 import "./index.css";
+import ReactAudioPlayer from 'react-audio-player';
 
-class Player extends Component{
-  render(){
-    return(
-      <div className="player">
-        <p></p>
-        <audio id="audioController" className="hidden" controls="controls" autoPlay={true}></audio>
-        <p className="nowPlaying"><span id="artistPlaying"></span><span id="songPlayingNow"></span></p>        
-      </div>
+const CLIENTID = "TJ3pAMUCLJAGmlRHCQ3KFKIMMex3Azp3";
+
+function getTrackUrl(track) {
+  return track.stream_url + "?client_id=" + CLIENTID;
+}
+
+function Player(props) {
+  if (props.track) {
+    return (
+        <div className="player">
+          <ReactAudioPlayer
+              src={getTrackUrl(props.track)}
+              controls
+              autoPlay
+            />
+          <p className="nowPlaying">
+            <span id="artistPlaying">Now Playing: {props.track.user.username} </span>
+            <span id="songPlayingNow">{props.track.title}</span>
+          </p>
+        </div>
     );
   }
 }

@@ -1,7 +1,7 @@
 import React, { Component} from "react";
 import "./index.css";
+
 const soundCloudService = require('../services/soundcloud')
-const APIKEY = "1e82cb59611dbc3be9760487fc7bab2d";
 
 class Search extends Component{  
   constructor(props) {
@@ -12,10 +12,10 @@ class Search extends Component{
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.trackChange = this.trackChange.bind(this);
+    this.searchInputChange = this.searchInputChange.bind(this);
   }
 
-  trackChange(event) {
+  searchInputChange(event) {
     this.setState({
       trackSearch: event.target.value,
       tracks: []
@@ -23,16 +23,7 @@ class Search extends Component{
   };
 
   trackClick(track) {
-    
-    let element = document.querySelector("#audioController");
-    element.classList.remove("hidden");
-    
-    let audioController = document.querySelector("#audioController");
-    audioController.src = track.stream_url + "?client_id=" + APIKEY;
-    audioController.load();
-
-    document.querySelector("#artistPlaying").innerHTML = "Now Playing: " + track.user.username + " ";
-    document.querySelector("#songPlayingNow").innerHTML = track.title;
+    this.props.onTrackPlay(track);
   };
 
   handleSubmit(event) {
@@ -42,7 +33,6 @@ class Search extends Component{
     this.setState({
         query: this.state.trackSearch,
       }, () => {
-        this.moveTitleUp();
         soundCloudService.Query(userInput)
         .then((data) => {
           console.log(data);
@@ -70,13 +60,12 @@ class Search extends Component{
       <div className="search">
           <form onSubmit={this.handleSubmit}>
             <div className="searchWrapper">
-                <input type="text" name="search" value={this.state.trackSearch} className="searchBar" placeholder="Artist..." onChange={this.trackChange} />
+                <input type="text" name="search" value={this.state.trackSearch} className="searchBar" placeholder="Artist..." onChange={this.searchInputChange} />
                 <button className="searchBtn" value="SEARCH">SEARCH</button>
             </div>
           </form>
-          <hr className="break hidden" />
           <div className="searchResultsSection">
-            <h2 className="resultsTitle hidden">Search Results:</h2>
+            {this.state.tracks && this.state.tracks.length > 0 && <h2 className="resultsTitle hidden">Search Results:</h2>}
             <div className="searchResults">
               {
                 this.state.tracks.map(track => (
@@ -94,19 +83,9 @@ class Search extends Component{
     );
   }
 
-  updateNowPlaying(currentArtist, currentSong){
-    document.querySelector("#artistPlaying").innerHTML = "Now Playing: " + currentArtist + " ";
-    document.querySelector("#songPlayingNow").innerHTML = currentSong;
-  }
-
   clearResults() {
     var searchResultsContainer = document.querySelector(".searchResults");
     searchResultsContainer.innerHTML = "";
-  }
-
-  moveTitleUp() {
-    var title = document.querySelector(".title");
-    title.style.margin = "4% 0 0 0";
   }
 }
 
